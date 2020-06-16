@@ -1,0 +1,94 @@
+<!-- {% load staticfiles %} -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>vika.somesite.net | {% block title %} сервис рассылок {% endblock title %}</title>
+  <!-- bootstrap -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+
+  <style>
+    .btn-link {
+      color: #50dfec;
+      text-shadow: none;
+    }
+    .btn-link:hover {
+      color: #000000;
+    }
+    
+
+   ul.hr {
+    margin: 0; /* Обнуляем значение отступов */
+    padding: 4px; /* Значение полей */
+   }
+   ul.hr li {
+    display: inline; /* Отображать как строчный элемент */
+    margin-right: 5px; /* Отступ слева */
+    /*border: 1px solid #000;  Рамка вокруг текста */
+    padding: 3px; /* Поля вокруг текста */
+
+   }
+  
+
+  </style>
+
+{% block styles %}
+{% endblock styles %}
+
+</head>
+
+<body>
+<center>
+<div id="header">
+    <span class="logo">Клубнички</span>
+
+    <span class="user">
+        {% if request.user.is_authenticated %}
+            Hello {{ request.user.first_name }},
+            <a href="{% url "logout" %}">Logout</a>
+        {% else %}
+            <a href="{% url "login" %}">Log-in</a>
+        {% endif %}
+    </span>
+
+    <br>
+    <br>
+    
+    {% if request.user.is_authenticated %}
+
+    
+        <ul class="menu hr">
+            
+            <li {% if section == "statistic" %}class="selected"{% endif %}>
+            <a class="btn btn-primary" href="/statistics">Статистика</a>
+            </li>
+            <li {% if section == "letters" %}class="selected"{% endif %}>
+                <a class="btn btn-primary" href="/letters">Письма</a>
+            </li>
+            <li {% if section == "messages" %}class="selected"{% endif %}>
+                <a class="btn btn-success" href="/chat">Сообщения</a>
+            </li>
+            <li {% if section == "payments" %}class="selected"{% endif %}>
+                <a class="btn btn-primary" href="/payments">Платежи</a>
+        </ul>
+    
+
+    {% endif %}
+
+    
+</div>
+
+
+<div id="content">
+<br>
+<br>
+<br>
+    {% block content %}
+    {% endblock %}
+
+</div>
+
+</center>
+
+</body>
+</html>
