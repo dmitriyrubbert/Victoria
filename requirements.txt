@@ -2,7 +2,7 @@ amqp==2.2.1
 billiard==3.5.0.3
 celery==4.1.0
 defusedxml==0.5.0
-Django==1.11.4
+Django==1.11.29
 grab==0.6.38
 kombu==4.1.0
 lxml==3.8.0
