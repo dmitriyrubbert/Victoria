@@ -5,7 +5,7 @@ defusedxml==0.5.0
 Django==1.11.4
 grab==0.6.38
 kombu==4.1.0
-lxml==3.8.0
+lxml==4.6.2
 pycurl==7.43.0
 pytils==0.3
 pytz==2017.2
